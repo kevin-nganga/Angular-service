@@ -1,0 +1,54 @@
+<section>
+  <div class="row">
+
+    <!----------------Get User contact---------------------------------------------->
+
+    <div class="col s3">
+      <form class="card-panel grey lighten-5">
+      <h2 style="font-family: 'Georgia';">My Contact</h2><hr/>
+      <div class="form-group row">
+        <label>Name</label>
+          <input class="form-control" type="text" name="name" ng-model="newContact.name">
+      </div>
+      <div class="form-group row">
+        <label>Email</label>
+          <input class="form-control" type="email" name="email" ng-model="newContact.email">
+      </div>
+      <div class="form-group row">
+        <label>Phone</label>
+          <input class="form-control" type="tel" name="phone" ng-model="newContact.phone">
+      </div>
+      <div class="divider"></div>
+      <input type="hidden" ng-model="newContact.id" />
+      <button class="btn waves-effect waves-light btn-block light-green darken-3" type="submit" name="action" ng-click="saveContact()">Save</button>
+    </form>
+    </div>
+
+    <!----------------TABLE DISPLAYS DATA------------------------------------------>
+
+    <div class="col s9">
+      <table class="highlight">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="contact in contacts | filter:query">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email}}</td>
+          <td>{{ contact.phone }}</td>
+          <td><a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> |
+              <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
